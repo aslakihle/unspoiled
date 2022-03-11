@@ -1,4 +1,4 @@
-const apiConfig = require("./config/backend-api.config");
+
 import path from "path";
 import fs from "fs";
 

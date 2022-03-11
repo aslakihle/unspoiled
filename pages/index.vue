@@ -17,18 +17,18 @@
 export default {
 
   // Backend Get request
-  methods: {
-    async showMessageFromBackend () {
+  // methods: {
+  //   async showMessageFromBackend () {
 
-      try {
-        const response = await this.$axios.post('/api/login')
-        console.log(response)
-      } catch (err) {
-        console.log(err)
-      }
+  //     try {
+  //       const response = await this.$axios.post('/api/login')
+  //       console.log(response)
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
 
-    }
-  }
+  //   }
+  // }
 }
 </script>
 

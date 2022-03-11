@@ -16,6 +16,7 @@
 import SetCookieParser from 'set-cookie-parser';
 import axios from 'axios'
 import util from '../assets/js/util'
+require('dotenv').config();
 export default {
     
     name: 'Login',
@@ -31,7 +32,7 @@ export default {
     methods: {
     //Would like to use the button to do this:
         async loginRequest() {
-            await axios.post('http://localhost:5000/user/login', {username: this.username, password: this.password}, { 
+            await axios.post(process.env.baseURL + 'user/login', {username: this.username, password: this.password}, { 
                 withCredentials: true
                 })
             .then(response => {
