@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import SetCookieParser from 'set-cookie-parser';
+// import SetCookieParser from 'set-cookie-parser';
 import axios from 'axios'
-import util from '../assets/js/util'
+// import util from '../assets/js/util'
 require('dotenv').config();
 export default {
     

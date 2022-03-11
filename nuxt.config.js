@@ -1,6 +1,6 @@
 
-import path from "path";
-import fs from "fs";
+// import path from "path";
+// import fs from "fs";
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -35,7 +35,7 @@ export default {
   css: ["@/assets/css/global.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: "@/plugins/forward-set-cookies.js", mode: "server" }],
+  // plugins: [{ src: "@/plugins/forward-set-cookies.js", mode: "server" }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
