@@ -32,7 +32,7 @@ export default {
     methods: {
     //Would like to use the button to do this:
         async loginRequest() {
-            await axios.post(process.env.baseURL + 'user/login', {username: this.username, password: this.password}, { 
+            await axios.post('user/login', {username: this.username, password: this.password}, { 
                 withCredentials: true
                 })
             .then(response => {
