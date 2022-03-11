@@ -1,23 +1,67 @@
 <template>
-    <div class="login">
+    <form v-on:submit.prevent="loginRequest" class="login">
+        <div class="feedback" v-html="feedbackText"></div>
         <h1>Log in</h1>
         <p>Username</p>
-        <input id="login-username" class="small-input" type="text">
+        <input id="login-username" class="small-input form-control" v-model="username" type="text">
         <p>Password</p>
-        <input id="login-password" class="small-input" type="password">
-        <div class="button" >Log in</div>
+        <input id="login-password" class="small-input form-control" v-model="password" type="password">
+        <!-- <button type='button' class="button">Log in</button>  -->
+        <input type="submit" class="button" value="Log in">
         <NuxtLink to="/register">or register here</NuxtLink>
-    </div>
+    </form>
 </template>
 
 <script>
+import SetCookieParser from 'set-cookie-parser';
+import axios from 'axios'
+import util from '../assets/js/util'
 export default {
-    name: 'Login'
+    
+    name: 'Login',
+
+    data() {
+        return {
+            username: 'Bob',
+            password: 'password',
+            feedbackText: '',
+        };
+    },
+
+    methods: {
+    //Would like to use the button to do this:
+        async loginRequest() {
+            await axios.post('http://localhost:5000/user/login', {username: this.username, password: this.password}, { 
+                withCredentials: true
+                })
+            .then(response => {
+                // const cookies = SetCookieParser.parse(response);
+                console.log(response.headers)
+                // cookies.forEach((cookie) => {
+                //     const { name, value, ...options } = cookie;
+                //     $cookies.set(name, value, options);
+                // });
+                this.feedbackText = response.data.feedback;
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+    }
 }
+
 </script>
 
-<style scoped>
 
+
+<style scoped>
+.feedback {
+    width: 20rem;
+    height: 30px;
+    text-align: center;
+    position: relative;
+    top: 20px;
+}
 
 .login {
     width: 20rem;

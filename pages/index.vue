@@ -7,7 +7,7 @@
 
   <!-- backend get req -->
 
-  <button @click="showMessageFromBackend">Show message from backend</button>
+  <!-- <button @click="showMessageFromBackend">Show message from backend</button> -->
 
   </div>
   
