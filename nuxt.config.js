@@ -50,12 +50,20 @@ export default {
     },
   },
 
+  publicRuntimeConfig: {
+    API_URL: process.env.API_URL || "http://localhost:5000/"
+  },
+
+  // publicRuntimeConfig: {
+  //   API_URL: "http://localhost:5000/"
+  // },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     "cookie-universal-nuxt",
-    "@nuxtjs/dotenv",
+    // "@nuxtjs/dotenv",
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
