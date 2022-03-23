@@ -35,12 +35,16 @@ export default {
                     })
                 .then(response => {
                     // const cookies = SetCookieParser.parse(response);
-                    console.log(response)
+                    console.log(response.status)
                     // cookies.forEach((cookie) => {
                     //     const { name, value, ...options } = cookie;
                     //     $cookies.set(name, value, options);
                     // });
+                    if (response.status = 200) {
+                        this.$router.push('/login')
+                    }
                     this.feedbackText = response.data.feedback;
+                    
             })
             .catch(err => {
                 console.log(err)
