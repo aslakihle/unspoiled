@@ -94,13 +94,13 @@ export default {
         endpoints: {
           login: {
             // url: process.env.API_URL + `auth/login` || "http://localhost:5000/auth/login", method: "post",
-            url: process.env.API_URL || "http://localhost:5000/" + `auth/login` , method: "post",
+            url: (process.env.API_URL || "http://localhost:5000/") + `auth/login` , method: "post",
           },
           logout: {
-            url: process.env.API_URL || "http://localhost:5000/" + `auth/logout` , method: "post",
+            url: (process.env.API_URL || "http://localhost:5000/") + `auth/logout` , method: "post",
           },
           user: {
-            url: process.env.API_URL || "http://localhost:5000/" + `auth/user` , method: "get",
+            url: (process.env.API_URL || "http://localhost:5000/") + `auth/user` , method: "get",
           },
         },
       },
