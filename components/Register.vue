@@ -1,20 +1,59 @@
 <template>
-    <div class="login">
+    <form v-on:submit.prevent="registerRequest" class="login">
         <h1>Register</h1>
         <p>Username</p>
-        <input id="register-username" class="small-input" type="text">
+        <input id="register-username" class="small-input" v-model="username" type="text">
         <p>Password</p>
-        <input id="register-password" class="small-input" type="password">
+        <input id="register-password" class="small-input" v-model="password" type="password">
         <p>Repeat password</p>
-        <input id="register-repeat" class="small-input" type="password">
-        <div class="button" >Register</div>
+        <input id="register-repeat" class="small-input" v-model="repeat" type="password">
+        <input type="submit" class="button" value="Register">
         <NuxtLink to="/register">or log in here</NuxtLink>
-    </div>
+    </form>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-    name: 'Register'
+    name: 'Register',
+
+     data() {
+        return {
+            username: '',
+            password: '',
+            repeat: '',
+            feedbackText: '',
+        };
+    },
+
+    methods: {
+        
+        async registerRequest() {
+            if (this.password === this.repeat) {
+                await axios.put(this.$config.API_URL + `auth/register`, {username: this.username, password: this.password}, { 
+                    withCredentials: true
+                    })
+                .then(response => {
+                    // const cookies = SetCookieParser.parse(response);
+                    console.log(response)
+                    // cookies.forEach((cookie) => {
+                    //     const { name, value, ...options } = cookie;
+                    //     $cookies.set(name, value, options);
+                    // });
+                    this.feedbackText = response.data.feedback;
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            } else {
+                this.password = '';
+                this.repeat = '';
+                this.feedbackText = 'These passwords do not match';
+            }
+            
+        }
+    }
+
 }
 </script>
 
