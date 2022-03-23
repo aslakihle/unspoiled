@@ -51,7 +51,7 @@ export default {
   },
 
   publicRuntimeConfig: {
-    API_URL: process.env.API_URL || "http://localhost:5000/"
+    API_URL: process.env.API_URL || "http://localhost:5000/",
   },
 
   // publicRuntimeConfig: {
@@ -62,9 +62,50 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    "cookie-universal-nuxt",
-    // "@nuxtjs/dotenv",
+    // "cookie-universal-nuxt",
+    "@nuxtjs/auth-next",
   ],
+
+  // Global auth middleware
+  // router: {
+  //   middleware: ["auth"],
+  // },
+
+  auth: {
+    // Options
+    redirect: {
+      login: "/login",
+      logout: "/",
+      callback: "/login",
+      home: "/",
+    },
+    strategies: {
+      local: {
+        token: {
+          property: "token",
+          global: true,
+          // required: true,
+          // type: 'Bearer'
+        },
+        user: {
+          property: "user",
+          // autoFetch: true
+        },
+        endpoints: {
+          login: {
+            // url: process.env.API_URL + `auth/login` || "http://localhost:5000/auth/login", method: "post",
+            url: process.env.API_URL || "http://localhost:5000/" + `auth/login` , method: "post",
+          },
+          logout: {
+            url: process.env.API_URL || "http://localhost:5000/" + `auth/logout` , method: "post",
+          },
+          user: {
+            url: process.env.API_URL || "http://localhost:5000/" + `auth/user` , method: "get",
+          },
+        },
+      },
+    },
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   // axios: {

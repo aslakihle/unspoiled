@@ -7,17 +7,29 @@
             <input type="text">
             <font-awesome-icon :icon="['fas', 'magnifying-glass']"/>
         </div>
-        <div class="login">
+        <div v-if="!this.$auth.loggedIn" class="login">
             <NuxtLink to="/login">Login</NuxtLink>
             <NuxtLink to="/register">Register</NuxtLink>
+        </div>
+        <div v-if="this.$auth.loggedIn" class="login">
+            <a href="#" @click="logout">Logout</a>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+    methods: {
+        async logout() {
+             await this.$auth.logout()
+         },
+
+    }
+
 }
+
+
 </script>
 
 

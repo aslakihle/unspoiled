@@ -7,28 +7,30 @@
 
   <!-- backend get req -->
 
-  <!-- <button @click="showMessageFromBackend">Show message from backend</button> -->
-
+    <h4 v-if="this.$auth.loggedIn">>Hello {{this.$auth.user.username}}! You are {{this.$auth.user.role}}.</h4>
   </div>
   
 </template>
 
 <script>
 export default {
-
+  data() {
+          return {
+              testtext: '',
+          };
+      },
   // Backend Get request
-  // methods: {
-  //   async showMessageFromBackend () {
+  methods: {
+    async userUserData () {
 
-  //     try {
-  //       const response = await this.$axios.post('/api/login')
-  //       console.log(response)
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
+      try {
+        console.log(this.$auth.user)
+      } catch (err) {
+        console.log(err)
+      }
 
-  //   }
-  // }
+    }
+  }
 }
 </script>
 

@@ -30,22 +30,39 @@ export default {
 
     methods: {
         async loginRequest() {
-            await axios.post(this.$config.API_URL + `user/login`, {username: this.username, password: this.password}, { 
-                withCredentials: true
-                })
-            .then(response => {
-                // const cookies = SetCookieParser.parse(response);
-                console.log(response.headers)
-                // cookies.forEach((cookie) => {
-                //     const { name, value, ...options } = cookie;
-                //     $cookies.set(name, value, options);
-                // });
-                this.feedbackText = response.data.feedback;
+            this.error = null
+
+            return this.$auth
+                .loginWith('local', {
+                data: {
+                    username: this.username,
+                    password: this.password
+                }
             })
-            .catch(err => {
-                console.log(err)
+            .catch((err) => {
+            // eslint-disable-next-line no-console
+            console.error(err)
+            const responseData = err.response?.data
+            this.error = responseData?.error ?? responseData
             })
-        }
+        },
+        // async loginRequest() {
+        //     await axios.post(this.$config.API_URL + `auth/login`, {username: this.username, password: this.password}, { 
+        //         withCredentials: true
+        //         })
+        //     .then(response => {
+        //         // const cookies = SetCookieParser.parse(response);
+        //         console.log(response)
+        //         // cookies.forEach((cookie) => {
+        //         //     const { name, value, ...options } = cookie;
+        //         //     $cookies.set(name, value, options);
+        //         // });
+        //         this.feedbackText = response.data.feedback;
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
+        // }
     }
 }
 
