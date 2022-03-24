@@ -7,30 +7,21 @@
 
   <!-- backend get req -->
 
-    <h4 v-if="this.$auth.loggedIn">>Hello {{this.$auth.user.username}}! You are {{this.$auth.user.role}}.</h4>
+    <h4 v-if="this.$auth.loggedIn">Hello {{this.$auth.user.username}}!</h4>
   </div>
   
 </template>
 
 <script>
 export default {
-  data() {
-          return {
-              testtext: '',
-          };
-      },
-  // Backend Get request
-  methods: {
-    async userUserData () {
-
-      try {
-        console.log(this.$auth.user)
-      } catch (err) {
-        console.log(err)
-      }
-
-    }
-  }
+  // data() {
+  //         return {
+  //             testtext: '',
+  //         };
+  //     },
+  // methods: {
+    
+  // }
 }
 </script>
 

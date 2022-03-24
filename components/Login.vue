@@ -107,12 +107,18 @@ export default {
 .button {
     width: 100%;
     background-color: var(--light-green);
+    
 }
 
 .login a {
     text-align: center;
     margin: auto;
     color: white;
+}
+
+.button:hover {
+    /* transform: translateY(-0.5px); */
+    background-color: var(--dark-green);
 }
 
 </style>

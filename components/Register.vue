@@ -1,5 +1,6 @@
 <template>
     <form v-on:submit.prevent="registerRequest" class="login">
+        <div class="feedback" v-html="feedbackText"></div>
         <h1>Register</h1>
         <p>Username</p>
         <input id="register-username" class="small-input" v-model="username" type="text">
@@ -92,6 +93,10 @@ export default {
 .button {
     width: 100%;
     background-color: var(--light-green);
+}
+.button:hover {
+    /* transform: translateY(-0.5px); */
+    background-color: var(--dark-green);
 }
 
 .login a {
